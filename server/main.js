@@ -42,8 +42,9 @@ JsonRoutes.Middleware.checkAuthorized = function(req, res, next) {
 
 JsonRoutes.Middleware.use('/api', JsonRoutes.Middleware.checkAuthorized);
 
-JsonRoutes.add('GET', '/api/places/',    getPlaces);
-JsonRoutes.add('GET', '/api/places/:id', getPlaces);
+JsonRoutes.add('GET',  '/api/places/',    getPlaces);
+JsonRoutes.add('POST', '/api/places/',    newPlace);
+JsonRoutes.add('GET',  '/api/places/:id', getPlaces);
 
 function getPlaces(req, res, next) {
     var id = req.params.id;
@@ -52,6 +53,27 @@ function getPlaces(req, res, next) {
         data:  {
             success: true,
             data: id ? Places.findOne(id) : Places.find().fetch()
+        }
+    });
+}
+
+function newPlace(req, res, next) {
+    var place = {
+        place: req.body.place,
+        author: req.body.author,
+        owner: req.userId
+    };
+
+    check(place, {
+        place: String,
+        author: String,
+        owner: String
+    });
+
+    JsonRoutes.sendResult(res, {
+        data: {
+            success: true,
+            placeId: Places.insert(place)
         }
     });
 }

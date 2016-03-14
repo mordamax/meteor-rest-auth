@@ -13,6 +13,10 @@
     </li>
 </ul>
 
+<p class="text-center">
+    <a ng-if="$root.currentUser" class="btn btn-success " ui-sref="newPlace">Add new Place</a>
+</p>
+
 <div class="text-center text-danger" ng-if="vm.error">
     <div ng-switch="vm.error.status">
         <div ng-switch-when="401">

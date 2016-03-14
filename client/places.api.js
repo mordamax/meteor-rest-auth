@@ -14,7 +14,7 @@
         return {
             places: $resource('/api/places/:id'),
             signin: (params) => $resource('/users/login').save(params, saveToken),
-            signup: (params) => $resource('/users/register').save(params, saveToken),
+            signup: (params) => $resource('/users/register').save(params, saveToken)
         };
     }
 

@@ -40,8 +40,8 @@
         }
     }
 
-    Config.$inject = ['$stateProvider', '$urlRouterProvider', '$httpProvider'];
-    function Config($stateProvider, $urlRouterProvider, $httpProvider) {
+    Config.$inject = ['$stateProvider', '$urlRouterProvider'];
+    function Config($stateProvider, $urlRouterProvider) {
         $urlRouterProvider.otherwise('/');
         $stateProvider
             .state('about',         _getRouteParams('/about',  'client/about/places.about.html', 'places.about.AboutCtrl'))
@@ -50,6 +50,7 @@
             .state('auth.signin',   _getRouteParams('/signin', 'client/auth/places.auth.html',   'places.auth.AuthCtrl', 'auth'))
             .state('auth.logout',   _getRouteParams('/logout', '',                               'places.auth.AuthCtrl', 'auth'))
             .state('places',        _getRouteParams('/',       'client/list/places.list.html',   'places.list.PlacesListCtrl'))
+            .state('newPlace',      _getRouteParams('/new',    'client/list/places.new.html',    'places.list.PlacesNewCtrl'))
             .state('place',         _getRouteParams('/:id',    'client/list/places.one.html',    'places.list.PlacesListCtrl'))
         ;
     }

@@ -6,18 +6,18 @@
         'angular-templates',
         'places.api'
     ])
-        .controller('places.list.PlacesListCtrl', PlacesListCtrl);
+        .controller('places.list.PlacesListCtrl', PlacesListCtrl)
+        .controller('places.list.PlacesNewCtrl', PlacesNewCtrl)
+    ;
 
     PlacesListCtrl.$inject = [
         '$scope',
-        '$state',
         '$reactive',
         '$stateParams',
         'places.api.API'
     ];
     function PlacesListCtrl(
         $scope,
-        $state,
         $reactive,
         $stateParams,
         API
@@ -31,6 +31,23 @@
                 }
             })
         });
+    }
+
+    PlacesNewCtrl.$inject = ['places.api.API', '$state'];
+    function PlacesNewCtrl(API, $state) {
+        this.place = {};
+        this.createPlace = () => {
+            API.places.save(this.place, (data) => {
+                if (data && data.placeId) {
+                    $state.go('place', {id: data.placeId});
+                }
+            }, (response) => {
+                this.error = {
+                    status: response.status,
+                    data: response.data
+                }
+            })
+        }
     }
 
 })(angular);
