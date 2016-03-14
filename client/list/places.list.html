@@ -1,0 +1,27 @@
+<h1 class="text-center">
+    Find Beautiful Places
+</h1>
+
+<p ng-hide="vm.places.$resolved" class="text-center">Loading...</p>
+
+<ul ng-show="vm.places.$resolved"
+    ng-repeat="item in vm.places.data">
+    <li>
+        <a ui-sref="place({id: item._id})">
+            {{item.place}}
+        </a> - {{ item.author }}
+    </li>
+</ul>
+
+<div class="text-center text-danger" ng-if="vm.error">
+    <div ng-switch="vm.error.status">
+        <div ng-switch-when="401">
+            You're not Authorized to see the list of places.
+            <br>
+            Please <a ui-sref="auth.signin">Login</a> or <a ui-sref="auth.signup">Create an Account</a>
+        </div>
+        <div ng-switch-default>
+            Sorry, something went wrong.
+        </div>
+    </div>
+</div>

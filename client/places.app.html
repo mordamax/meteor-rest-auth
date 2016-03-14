@@ -1,0 +1,40 @@
+<body ng-app="places.app">
+    <header>
+        <nav class="navbar navbar-light bg-faded">
+            <div class="container">
+                <ul class="nav navbar-nav">
+                    <li class="nav-item" ui-sref-active="active">
+                        <a class="nav-link" ui-sref="places">Home</a>
+                    </li>
+                    <li class="nav-item" ui-sref-active="active">
+                        <a class="nav-link" ui-sref="about">About</a>
+                    </li>
+                    <li ng-if="!$root.currentUser" class="nav-item pull-right" ui-sref-active="active" ng-cloak>
+                        <a class="nav-link" ui-sref="auth.signup" >Create an Account</a>
+                    </li>
+                    <li ng-if="!$root.currentUser"class="nav-item pull-right" ui-sref-active="active" ng-cloak>
+                        <a class="nav-link" ui-sref="auth.signin" >Log In</a>
+                    </li>
+
+                    <li ng-if="$root.currentUser" class="nav-item pull-right" ng-cloak>
+                        <a class="nav-link" ng-click="$root.logout()">Log out</a>
+                    </li>
+
+                    <li ng-if="$root.currentUser" class="nav-item pull-right" ng-cloak>
+                        <a href="" class="nav-link">{{$root.currentUser.emails[0].address}}</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <ui-view></ui-view>
+
+        <footer class="text-center">
+            <hr>
+            <p>© Maksym Hlukhovtsov 2016</p>
+        </footer>
+    </div>
+
+
+</body>
