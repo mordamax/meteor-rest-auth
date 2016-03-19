@@ -1,0 +1,21 @@
+{
+  "appName": "meteor-rest",
+  "servers": [
+    {
+      "host": "xx.xx.xx.xx",
+      "username": "root",
+      "password": "pwd"
+    }
+  ],
+  "setupMongo": true,
+  "setupNode": true,
+  "nodeVersion": "0.12.12",
+  "setupNginx": true,
+  "sslcert": "",
+  "sslkey": "",
+  "appSiteUrl": "soften-it.com",
+  "app": "/var/www/some.com",
+  "env": {
+    "ROOT_URL": "127.0.0.1"
+  }
+}
