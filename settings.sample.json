@@ -4,5 +4,9 @@
       "ROOT_URL": "http://www.example.com",
       "MONGO_URL": "mongodb://<user>:<password>@<id>.mlab.com:19829/<db>"
     }
+  },
+  "kadira": {
+    "appId": "appId",
+    "appSecret": "appSecret"
   }
 }

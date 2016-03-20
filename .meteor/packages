@@ -31,3 +31,4 @@ simple:rest-bearer-token-parser
 simple:rest-json-error-handler
 check
 meteorhacks:sikka
+meteorhacks:kadira
