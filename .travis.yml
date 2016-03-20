@@ -3,8 +3,8 @@ language: node_js
 node_js:
   - "0.12"
 before_install:
-  - curl https://install.meteor.com/ | sh
+  - "curl -L https://raw.githubusercontent.com/arunoda/travis-ci-laika/master/configure.sh | /bin/sh"
 services:
   - mongodb
-script:
-  - meteor --test
+env:
+  - LAIKA_OPTIONS="-t 5000"
