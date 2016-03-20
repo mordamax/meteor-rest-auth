@@ -1,0 +1,8 @@
+{
+  "galaxy.meteor.com": {
+    "env": {
+      "ROOT_URL": "http://www.example.com",
+      "MONGO_URL": "mongodb://<user>:<password>@<id>.mlab.com:19829/<db>"
+    }
+  }
+}
